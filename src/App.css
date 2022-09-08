@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
 .App {
   text-align: center;
 }
@@ -36,3 +38,15 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar{
+  background-color: #94dbcd;
+  padding: 10px;
+  font-size: 35px;
+  font-family: "Square Peg", cursive;
+}
+
+.titulo{
+  font-size: 40px;
+}
+

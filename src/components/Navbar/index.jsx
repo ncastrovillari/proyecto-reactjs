@@ -1,17 +1,20 @@
-import { HStack, Spacer, Link } from '@chakra-ui/react'
-import logo from '../../assets/logo.png'
+import { HStack, Spacer, Link } from "@chakra-ui/react";
+import logo from "../../assets/logo.png";
+import { CartWidget } from "../cartWidget";
 
 const Navbar = () => {
-    return(
-        <HStack>
-            <img src={logo} alt="" />
-            <Spacer />
-            <HStack>
-                <Link>Malbec</Link>
-                <Link>Cabernet</Link>
-            </HStack>
-        </HStack>
-    )
-}
+  return (
+    <HStack className="navbar">
+      <img src={logo} alt="" />
+      <h1 className="titulo">Tienda - Bodega Creación</h1>
+      <Spacer />
+      <HStack className="items">
+        <Link>Malbec</Link>
+        <Link>Cabernet</Link>
+        <CartWidget />
+      </HStack>
+    </HStack>
+  );
+};
 
-export { Navbar }
+export { Navbar };
