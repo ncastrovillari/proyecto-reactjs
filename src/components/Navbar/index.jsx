@@ -1,4 +1,5 @@
 import { HStack, Spacer, Link } from "@chakra-ui/react";
+// import { Component } from "react";
 import logo from "../../assets/logo.png";
 import { CartWidget } from "../cartWidget";
 
@@ -18,3 +19,4 @@ const Navbar = () => {
 };
 
 export { Navbar };
+

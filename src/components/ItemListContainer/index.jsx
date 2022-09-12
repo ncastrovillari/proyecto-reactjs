@@ -1,6 +1,13 @@
+import { Heading } from "@chakra-ui/react"
+import { ItemCount } from "../itemCount"
+
 const ItemListContainer = ({greeting}) => {
+    
     return(
-        <div>{greeting}</div>
+        <>
+        <Heading>{greeting}</Heading>
+        <ItemCount initial={1} stock={20} onAdd={() => {}} />
+        </>
     )
 }
 
