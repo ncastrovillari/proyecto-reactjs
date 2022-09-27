@@ -13,7 +13,7 @@ const Navbar = () => {
       </NavLink>
       <h1 className="titulo">Tienda - Bodega Creación</h1>
       <Spacer />
-      <HStack>
+      <HStack spacing="30px" p="15px">
         <NavLink to="/category/Malbec">
           <Link>Malbec</Link>
         </NavLink>

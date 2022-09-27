@@ -11,7 +11,6 @@ const ItemListContainer = ({ greeting }) => {
     const [loading, setLoading] = useState(true)
 
     const { category } = useParams()
-    console.log(category)
 
     useEffect(() => {
         setLoading(true)
@@ -29,8 +28,8 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <>
-            <Heading as='h2' size='md' align="center">{greeting}</Heading>
-            <Wrap spacing='30px' justify='center'>
+            <Heading as='h2' size='md' align="center" hidden>{greeting}</Heading>
+            <Wrap spacing='15px' justify='center'>
                 {!loading
                     ?
                     <ItemList listProduct={listProduct} />
