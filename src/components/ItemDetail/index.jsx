@@ -1,10 +1,18 @@
-import { Center, Image, VStack, HStack, Heading, Text } from "@chakra-ui/react"
+import { Center, Image, VStack, HStack, Heading, Text, Button } from "@chakra-ui/react"
+import { useState } from "react"
 import { FaCreditCard, FaHeart } from "react-icons/fa"
+import { NavLink } from "react-router-dom"
 import { ItemCount } from "../ItemCount"
 
 const ItemDetail = ({ listProduct }) => {
 
-    const { image, product, price, stock, description, } = listProduct
+    const { image, product, price, stock, description, initial } = listProduct
+
+    const [ agregado, setAgregado ] = useState(false)
+
+    const onAdd = () => {
+        setAgregado(true)
+    }
 
     return (
         <Center>
@@ -14,7 +22,14 @@ const ItemDetail = ({ listProduct }) => {
                 <Text>{description}</Text>
                 <Text fontSize="xl" as="b">Precio: ${price}</Text>
                 <Text>Stock: {stock}</Text>
-                <ItemCount initial={1} stock={20} onAdd={() => { }} />
+                {
+                    agregado ?
+                        <NavLink to="/cart">
+                            <Button variant="solid" colorScheme="green" size="sm">Ir al carrito</Button>
+                        </NavLink>
+                        :
+                        <ItemCount initial={initial} stock={stock} onAdd={onAdd} />
+                }
                 <HStack>
                     <FaCreditCard size="35px"></FaCreditCard>
                     <FaHeart size="35px"></FaHeart>
