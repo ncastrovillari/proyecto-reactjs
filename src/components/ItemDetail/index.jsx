@@ -8,7 +8,7 @@ const ItemDetail = ({ listProduct }) => {
 
     const { image, product, price, stock, description, initial } = listProduct
 
-    const [ agregado, setAgregado ] = useState(false)
+    const [agregado, setAgregado] = useState(false)
 
     const onAdd = () => {
         setAgregado(true)
