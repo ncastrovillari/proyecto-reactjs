@@ -5,10 +5,12 @@ import { ItemListContainer } from "./components/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { Cart } from "./components/Cart"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartContextProvider } from "./context/CartContext"
 
 function App() {
   return (
     <ChakraProvider>
+      <CartContextProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -18,6 +20,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
+      </CartContextProvider>
     </ChakraProvider>
   );
 }

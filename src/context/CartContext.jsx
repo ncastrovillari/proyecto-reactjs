@@ -48,7 +48,6 @@ export function CartContextProvider({ children }) {
             cartList
         }}>
             {children}
-
         </CartContext.Provider>
     )
 }

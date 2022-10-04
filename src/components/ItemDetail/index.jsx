@@ -3,15 +3,19 @@ import { useState } from "react"
 import { FaCreditCard, FaHeart } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
 import { ItemCount } from "../ItemCount"
+import { useCartContext } from "../../context/CartContext"
 
 const ItemDetail = ({ listProduct }) => {
 
     const { image, product, price, stock, description, initial } = listProduct
 
-    const [agregado, setAgregado] = useState(false)
+    const [isAdded, setIsAdded] = useState(false)
 
-    const onAdd = () => {
-        setAgregado(true)
+    const { addToCart } = useCartContext()
+
+    const onAdd = (quantity) => {
+        addToCart(listProduct, quantity)
+        setIsAdded(true)
     }
 
     return (
@@ -23,7 +27,7 @@ const ItemDetail = ({ listProduct }) => {
                 <Text fontSize="xl" as="b">Precio: ${price}</Text>
                 <Text>Stock: {stock}</Text>
                 {
-                    agregado ?
+                    isAdded ?
                         <NavLink to="/cart">
                             <Button variant="solid" colorScheme="green" size="sm">Ir al carrito</Button>
                         </NavLink>

@@ -8,11 +8,10 @@ import { useParams } from "react-router-dom"
 const ItemDetailContainer = () => {
 
     const [ listProduct, setListProduct ] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [ loading, setLoading ] = useState(true)
 
     const { id } = useParams()
 
-    
     useEffect(() => {
         setLoading(true)
         customFetch(products)
