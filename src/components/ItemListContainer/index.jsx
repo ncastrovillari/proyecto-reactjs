@@ -1,9 +1,11 @@
-import { Heading, Text, Wrap } from "@chakra-ui/react"
-import { ItemList } from "../ItemList"
-import { products } from "../../utils/products"
-import { customFetch } from "../../utils/customFetch"
-import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Heading, Text, Wrap } from "@chakra-ui/react";
+import { ItemList } from "../ItemList";
+// import { products } from "../../utils/products";
+// import { customFetch } from "../../utils/customFetch";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { db } from "../../firebase/firebase";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -13,19 +15,28 @@ const ItemListContainer = ({ greeting }) => {
     const { category } = useParams()
 
     useEffect(() => {
-        setLoading(true)
-        customFetch(products)
-            .then(res => {
-                if (category) {
-                    setLoading(false)
-                    setListProduct(res.filter(prod => prod.category === category))
-                } else {
-                    setLoading(false)
-                    setListProduct(res)
+
+        const productsColecction = collection(db, 'products');
+        const productCategory = query(productsColecction, where('category', '==', `${category}`))
+
+        let url= ( category === undefined ? productsColecction : productCategory)
+        
+        getDocs(url)
+        .then((data)=>{
+            const lista = data.docs.map((product)=>{
+                return {
+                    ...product.data(),
+                    id: product.id
                 }
             })
+            console.log(lista);
+            setListProduct(lista)
+        })
+        .finally(()=>{
+            setLoading(false);
+        })
     }, [category])
-
+    
     return (
         <>
             <Heading as='h2' size='md' align="center" hidden>{greeting}</Heading>
@@ -42,3 +53,14 @@ const ItemListContainer = ({ greeting }) => {
 }
 
 export { ItemListContainer };
+
+// customFetch(products)
+//     .then(res => {
+//         if (category) {
+//             setLoading(false)
+//             setListProduct(res.filter(prod => prod.category === category))
+//         } else {
+//             setLoading(false)
+//             setListProduct(res)
+//         }
+//     })
