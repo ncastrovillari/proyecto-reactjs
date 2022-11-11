@@ -13,6 +13,8 @@ const CartWidget = () => {
             <FaShoppingCart />
             <Text className="badge" fontSize='lg' as='b'>{totalQuantity()}</Text>
         </NavLink>
+        
+
     )
 }
 

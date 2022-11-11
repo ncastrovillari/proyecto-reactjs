@@ -1,7 +1,5 @@
 import { Heading, Text, Wrap } from "@chakra-ui/react";
 import { ItemList } from "../ItemList";
-// import { products } from "../../utils/products";
-// import { customFetch } from "../../utils/customFetch";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase/firebase";
@@ -29,7 +27,6 @@ const ItemListContainer = ({ greeting }) => {
                     id: product.id
                 }
             })
-            console.log(lista);
             setListProduct(lista)
         })
         .finally(()=>{
@@ -53,14 +50,3 @@ const ItemListContainer = ({ greeting }) => {
 }
 
 export { ItemListContainer };
-
-// customFetch(products)
-//     .then(res => {
-//         if (category) {
-//             setLoading(false)
-//             setListProduct(res.filter(prod => prod.category === category))
-//         } else {
-//             setLoading(false)
-//             setListProduct(res)
-//         }
-//     })

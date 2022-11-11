@@ -4,6 +4,7 @@ import { db } from "../../firebase/firebase"
 import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore"
 import { useState } from "react"
 import { products } from "../../utils/products"
+import { NavLink } from "react-router-dom"
 
 const Cart = () => {
 
@@ -26,7 +27,6 @@ const Cart = () => {
             totalPrice: totalPrice(),
         })
         .then((result) => {
-            console.log(result.id);
             setIdCompra(result.id)
             cartList.forEach(product => {
                 actualizarStock(product)
@@ -41,7 +41,6 @@ const Cart = () => {
     const actualizarStock = (product) => {
         const updateStock = doc(db, "productos", products.id)
         updateDoc(updateStock, {stock: (products.stock - products.quantity)})
-        console.log(products.stock);
     }
 
     return (
@@ -56,8 +55,9 @@ const Cart = () => {
                         <Button variant="solid" colorScheme="red" size="sm" onClick={() => removeProduct(prod.id)}>X</Button>
                     </HStack>    
                 )}
-                {cartList.length === 0 ?
-                    <Text>Tu carrito está vacío</Text>
+                {cartList.length === 0 ? 
+                    <><Text>Tu carrito está vacío</Text>
+                    <NavLink to={'/'}><Button variant="solid" colorScheme="green" size="sm">Inicio</Button></NavLink></>
                     :
                     <>
                     <Text as="b">Total: ${totalPrice()}</Text>

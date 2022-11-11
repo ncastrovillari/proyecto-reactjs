@@ -1,5 +1,4 @@
 import { HStack, Spacer, Link } from "@chakra-ui/react";
-// import { Component } from "react";
 import logo from "../../assets/logo.png";
 import { CartWidget } from "../CartWidget";
 import { NavLink } from "react-router-dom";
