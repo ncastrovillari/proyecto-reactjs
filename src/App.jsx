@@ -6,6 +6,7 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { Cart } from "./components/Cart"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from "./context/CartContext"
+import { FormularioCliente } from './components/Form/FormularioCliente.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/category/:category" element={<ItemListContainer greeting="Bienvenidos a la tienda de Bodega Creación" />} />
           <Route path="/product/:id" element={<ItemDetailContainer /> } />
           <Route path="/cart" element={<Cart />} />
+          <Route path='/FormularioCliente' element= { <FormularioCliente /> } />
         </Routes>
       </BrowserRouter>
       </CartContextProvider>
