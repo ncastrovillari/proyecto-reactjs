@@ -17,5 +17,3 @@ En la home se muestran todos los productos disponibles para la compra, con la po
 ### Link al proyecto 
 
 - https://proyecto-react-codehouse.netlify.app/
-
-### El proyecto se ve así
