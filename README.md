@@ -19,5 +19,3 @@ En la home se muestran todos los productos disponibles para la compra, con la po
 - https://proyecto-react-codehouse.netlify.app/
 
 ### El proyecto se ve así
-
-![](https://user-images.githubusercontent.com/104470919/202084161-d96fbca8-58a2-4d29-9788-01ae8a40ee5b.png)
