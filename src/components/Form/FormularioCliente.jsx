@@ -27,13 +27,6 @@ const FormularioCliente = () => {
   const { cleanCart, cartList, totalPrice } = useCartContext();
   const navigate = useNavigate();
 
-  const comprador = {
-    nombre: "Juan",
-    apellido: "Perez",
-    email: "juanperez@gmail.com",
-    telefono: "1167891234"
-};
-
   const validarCorreo = () => {
     if(correo.campo.length > 0){
       if(correo.campo !== correo2.campo){
@@ -61,10 +54,15 @@ const FormularioCliente = () => {
         const db = getFirestore();
         const ventasCollection = collection(db, "ventas")
         addDoc(ventasCollection, {
-            comprador,
-            items: cartList,
-            date: serverTimestamp(),
-            totalPrice: totalPrice(),
+          nombre: (nombre.campo),
+          apellido: (apellido.campo),
+          email: (correo.campo),
+          telefono: (telefono.campo),
+          domicilio: (domicilio.campo),
+          items: cartList,
+          totalPrice: totalPrice(),
+          date: serverTimestamp(),
+
         })
         .then( ({ id })  => {
           const swalText = nombre.campo + ' Tu orden fue realizada, tu numero de orden es: ' + id + '       Gracias por tu compra';
